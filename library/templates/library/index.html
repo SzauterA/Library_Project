@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to the Library</title>
+    {% load static %}
+</head>
+<body>
+    <h1>Welcome to the LibraryApp</h1>
+    <h2><a href="{% url 'books_list' %}">All books</a></h2>
+    <img src="{% static 'images/library.jpg' %}" alt="Library Image" width="800">
+</body>
+</html>

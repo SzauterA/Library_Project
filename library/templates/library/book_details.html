@@ -6,11 +6,19 @@
 <body>
     <h1>Book details:</h1>
     <div>
-        <h2>{{ book.title }}</h2>
-        <p>ISBN Number: {{book.isbn}}</p>
+        <h2>{{ book.title|title }}</h2>
+        <p>ISBN Number: {{ book.isbn }}</p>
         <p>Author: {{ book.author }}</p>
         <p>Year of publication: {{ book.year }}</p>
         <p>Page count: {{ book.pages }}</p>
+
+        {% if no_image %}
+            <p>No image available</p>
+        {% else %}
+            <p>Book Image:</p>
+            <img src="{{ book.image.url }}" alt="Book Image" width="150">
+        {% endif %}
     </div>
+    <p><a href="{% url 'books_list' %}">Back to books list</a></p>
 </body>
 </html>

@@ -5,11 +5,22 @@
 </head>
 <body>
     <h1>Books</h1>
-    <ul>
-        {% for book in books %}
-            <li>{{ book.title }}
-                <a href="books/{{ book.id }}">({{book.id}})</a></li>
-        {% endfor %}
-    </ul>
+    {% if no_results %}
+        <p>No books found matching your search criteria.</p>
+    {% else %}
+        <ul>
+            {% for book in books %}
+                <li>{{ book.title }}
+                    <a href="books/{{ book.id }}">({{book.id}})</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="get">
+        <table>
+        {{ form.as_table }}
+        </table>
+        <button type="submit">Search</button>
+    </form>
+    <p><a href="{% url 'index' %}">Back to home page</a></p>
 </body>
 </html>
