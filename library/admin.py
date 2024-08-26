@@ -1,5 +1,5 @@
 # Register your models here.
-from .models import Book
+from .models import Book, Author
 from django.contrib import admin
 from library.filters import PageRangeFilter
 
@@ -10,7 +10,15 @@ class BookAdmin(admin.ModelAdmin):
     ordering = ("title", "author")
     actions_on_top = True
     actions_on_bottom = True
-    
 
 admin.site.register(Book, BookAdmin)
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'country')
+    search_fields = ('name',)
+    
+admin.site.register(Author, AuthorAdmin)
+
+
+
 
