@@ -8,7 +8,14 @@
     <div>
         <h2>{{ book.title|title }}</h2>
         <p>ISBN Number: {{ book.isbn }}</p>
-        <p>Author: {{ book.author }}</p>
+        <p>Author:
+            {% for author in book.author.all %}
+                <a href="{% url 'author_details' author.id %}">{{ author.name }}</a>
+                {% if not forloop.last %}, {% endif %}
+            {% empty %}
+                No authors available
+            {% endfor %}
+        </p>
         <p>Year of publication: {{ book.year }}</p>
         <p>Page count: {{ book.pages }}</p>
 

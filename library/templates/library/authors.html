@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Books List</title>
+    <title>Authors List</title>
 </head>
 <body>
-    <h1>Books list</h1>
+    <h1>Authors list</h1>
     <div>
         <a href="{% url 'index' %}" style="font-size: 25px; font-weight: bold;">Home</a>
-        <a href="{% url 'authors_list' %}" style="font-size: 25px; font-weight: bold;">Authors</a>
+        <a href="{% url 'books_list' %}" style="font-size: 25px; font-weight: bold;">All books</a>
     </div> 
     <form method="get">
         <table>
@@ -16,12 +16,12 @@
         <button type="submit">Search</button>
     </form>
     {% if no_results %}
-        <p>No books found matching your search criteria.</p>
+        <p>No authors found matching your search criteria.</p>
     {% else %}
         <ul>
-            {% for book in books %}
-                <li>{{ book.title }}
-                    <a href="{% url 'book_details' book.id %}">({{ book.id }})</a>
+            {% for author in authors %}
+                <li>{{ author.name }}
+                    <a href="{% url 'author_details' author.id %}">({{ author.id }})</a>
             {% endfor %}
         </ul>
     {% endif %}

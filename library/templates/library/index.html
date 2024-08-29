@@ -6,7 +6,10 @@
 </head>
 <body>
     <h1>Welcome to the LibraryApp</h1>
-    <h2><a href="{% url 'books_list' %}">All books</a></h2>
+    <div>
+        <a href="{% url 'books_list' %}" style="font-size: 25px; font-weight: bold;">All books</a>
+        <a href="{% url 'authors_list' %}" style="font-size: 25px; font-weight: bold;">Authors</a>
+    </div>  
     <img src="{% static 'images/library.jpg' %}" alt="Library Image" width="800">
 </body>
 </html>

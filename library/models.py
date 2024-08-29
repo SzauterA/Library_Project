@@ -16,13 +16,16 @@ class Author(models.Model):
 class Book(models.Model):
     isbn = models.CharField(max_length=13)
     title = models.CharField(max_length=100)
-    author = models.CharField(max_length=100)
+    author = models.ManyToManyField(Author)
     year = models.IntegerField()
     pages = models.IntegerField()
     image = models.ImageField(upload_to="images/", blank=True, null=True)
 
     def __str__(self):
         return self.title
+    
+    def get_authors(self):
+        return ", ".join(author.name for author in self.author.all())
     
 
     
